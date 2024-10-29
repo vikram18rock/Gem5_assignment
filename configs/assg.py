@@ -13,3 +13,6 @@ system.clk_domain.voltage_domain = VoltageDomain()
 # creating 4GB main memory
 system.mem_mode = 'timing'
 system.mem_ranges = [AddrRange('4GB')]
+
+# setting OoO cpu for the system
+system.cpu = DerivO3CPU()
