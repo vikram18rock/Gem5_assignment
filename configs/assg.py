@@ -19,3 +19,7 @@ system.cpu = DerivO3CPU()
 
 # Create a Memoybus to connect cpu to memory
 system.membus = SystemXBar()
+
+# Connect cpu to membus
+system.cpu.icache_port = system.membus.cpu_side_ports
+system.cpu.dcache_port = system.membus.cpu_side_ports
