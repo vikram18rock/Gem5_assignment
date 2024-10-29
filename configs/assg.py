@@ -15,7 +15,7 @@ system.mem_mode = 'timing'
 system.mem_ranges = [AddrRange('4GB')]
 
 # setting OoO cpu for the system
-system.cpu = DerivO3CPU()
+system.cpu = X86TimingSimpleCPU()
 
 # Create a Memoybus to connect cpu to memory
 system.membus = SystemXBar()
@@ -64,4 +64,5 @@ root = Root(full_system = False, system = system)
 # instantiate the SIMULATION
 m5.instantiate()
 
+# Simulate the script
 m5.simulate()
