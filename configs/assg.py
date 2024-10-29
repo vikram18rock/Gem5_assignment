@@ -23,3 +23,17 @@ system.membus = SystemXBar()
 # Connect cpu to membus
 system.cpu.icache_port = system.membus.cpu_side_ports
 system.cpu.dcache_port = system.membus.cpu_side_ports
+
+# Connect an I/O Controller
+system.cpu.createInterruptController()
+# Exclusive for X86
+system.cpu.interrupts[0].pio = system.membus.mem_side_ports
+system.cpu.interrupts[0].int_requestor = system.membus.cpu_side_ports
+system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
+# pio       - Parallel input output Controller
+# requestor - membus port to request from cpu
+# responder - membus port to respond for cpu
+
+# Important system_port, functional port
+# Allows read and write of memory by system
+system.system_port = system.membus.cpu_side_ports
