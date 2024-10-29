@@ -54,3 +54,14 @@ process = Process()
 process.cmd = [binary]
 system.cpu.workload = process
 system.cpu.createThreads()
+
+"""
+    # All simObjects are children to Root simObject
+    # only children of Root simObject are instantiated during a SIMULATION
+"""
+root = Root(full_system = False, system = system)
+
+# instantiate the SIMULATION
+m5.instantiate()
+
+m5.simulate()
