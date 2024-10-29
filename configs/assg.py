@@ -37,3 +37,20 @@ system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
 # Important system_port, functional port
 # Allows read and write of memory by system
 system.system_port = system.membus.cpu_side_ports
+
+# -------------------- SIMULATION ---------------------- #
+"""
+    # Create a process
+    # Point it to the compiled binary
+"""
+
+# process creation
+# point to binary
+binary = 'ca_configs/hello'
+
+system.workload = SEWorkload.init_compatible(binary)
+
+process = Process()
+process.cmd = [binary]
+system.cpu.workload = process
+system.cpu.createThreads()
