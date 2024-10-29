@@ -16,3 +16,6 @@ system.mem_ranges = [AddrRange('4GB')]
 
 # setting OoO cpu for the system
 system.cpu = DerivO3CPU()
+
+# Create a Memoybus to connect cpu to memory
+system.membus = SystemXBar()
