@@ -19,6 +19,12 @@ system.mem_ranges = [AddrRange('4GB')]
 # setting OoO cpu for the system
 system.cpu = X86O3CPU()
 
+# Set Fetch/Decode/Issue/Commit Widths
+system.cpu.fetchWidth = 2
+system.cpu.decodeWidth = 2
+system.cpu.issueWidth = 2
+system.cpu.commitWidth = 2
+
 # Create Cache simObjects
 system.cpu.icache = L1ICache()
 system.cpu.dcache = L1DCache()
