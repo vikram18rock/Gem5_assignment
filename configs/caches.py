@@ -1,5 +1,5 @@
 # import objects from Cache.py module
-from m5.objects import Cache
+from m5.objects import Cache, BOPPrefetcher
 
 """ 
     # Cache class is the standard class
@@ -64,6 +64,9 @@ class L2Cache(Cache):
     # 1 + 5 + 3 = 9
     mshrs = 32
     tgts_per_mshr = 12
+    # Branch offset prefetcher
+    prefetcher = BOPPrefetcher()
+
 
     def connectCPUSideBus(self, bus):
         self.cpu_side = bus.mem_side_ports
