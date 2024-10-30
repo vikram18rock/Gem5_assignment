@@ -19,9 +19,6 @@ system.mem_ranges = [AddrRange('4GB')]
 # setting OoO cpu for the system
 system.cpu = X86TimingSimpleCPU()
 
-# Create a Memoybus to connect cpu to memory
-system.membus = SystemXBar()
-
 # Create Cache simObjects
 system.cpu.icache = L1ICache()
 system.cpu.dcache = L1DCache()
@@ -38,6 +35,11 @@ system.cpu.dcache.connectBus(system.l2bus)
 
 system.l2cache = L2Cache()
 system.l2cache.connectCPUSideBus(system.l2bus)
+
+# Create a Memoybus to connect cpu to memory
+system.membus = SystemXBar()
+
+system.l2cache.connectMemSideBus(system.membus)
 
 # Connect an I/O Controller
 system.cpu.createInterruptController()
