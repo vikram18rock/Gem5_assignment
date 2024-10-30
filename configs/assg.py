@@ -22,13 +22,13 @@ system.cpu = X86TimingSimpleCPU()
 # Create a Memoybus to connect cpu to memory
 system.membus = SystemXBar()
 
-# Connect cpu to membus
-system.cpu.icache_port = system.membus.cpu_side_ports
-system.cpu.dcache_port = system.membus.cpu_side_ports
 # Create Cache simObjects
 system.cpu.icache = L1ICache()
 system.cpu.dcache = L1DCache()
 
+# Connect cpu to cachePorts
+system.cpu.icache.connectCPU(system.cpu)
+system.cpu.dcache.connectCPU(system.cpu)
 # Connect an I/O Controller
 system.cpu.createInterruptController()
 # Exclusive for X86
