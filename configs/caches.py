@@ -29,8 +29,21 @@ class L1Cache(Cache):
     mshrs = 32
     tgts_per_mshr = 20
 
+    def connectCPU(self, cpu):
+    # need to define this in a base class!
+        raise NotImplementedError
+
+    def connectBus(self, bus):
+        self.mem_side = bus.cpu_side_ports
+
 class L1ICache(L1Cache):
     size = '32kB'
 
+    def connectCPU(self, cpu):
+        self.cpu_side = cpu.icache_port
+
 class L1DCache(L1Cache):
     size = '32kB'
+
+    def connectCPU(self, cpu):
+        self.cpu_side = cpu.dcache_port
