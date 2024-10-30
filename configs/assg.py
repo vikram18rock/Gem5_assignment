@@ -38,6 +38,12 @@ system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
 # Allows read and write of memory by system
 system.system_port = system.membus.cpu_side_ports
 
+# Add Memctrl unit as well
+system.mem_ctrl = MemCtrl()
+system.mem_ctrl.dram = DDR3_1600_8x8()
+system.mem_ctrl.dram.range = system.mem_ranges[0]
+system.mem_ctrl.port = system.membus.mem_side_ports
+
 # -------------------- SIMULATION ---------------------- #
 """
     # Create a process
