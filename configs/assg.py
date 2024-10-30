@@ -29,6 +29,13 @@ system.cpu.dcache = L1DCache()
 # Connect cpu to cachePorts
 system.cpu.icache.connectCPU(system.cpu)
 system.cpu.dcache.connectCPU(system.cpu)
+
+# Create a bus to connect L1Cache with L2Cache
+system.l2bus = L2XBar()
+
+system.cpu.icache.connectBus(system.l2bus)
+system.cpu.dcache.connectBus(system.l2bus)
+
 # Connect an I/O Controller
 system.cpu.createInterruptController()
 # Exclusive for X86
