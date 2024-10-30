@@ -25,6 +25,9 @@ system.cpu.decodeWidth = 2
 system.cpu.issueWidth = 2
 system.cpu.commitWidth = 2
 
+# Set Branch Predictor to Tage SC-L Predictor
+system.cpu.branchPred = TAGE_SC_L()  # Assuming TagePredictor is imported or defined
+
 # Create Cache simObjects
 system.cpu.icache = L1ICache()
 system.cpu.dcache = L1DCache()
