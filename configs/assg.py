@@ -1,6 +1,8 @@
 # imports
 import m5
 from m5.objects import *
+# import custom classes from caches module
+from caches import *
 
 # instantiating system
 system = System()
@@ -23,6 +25,9 @@ system.membus = SystemXBar()
 # Connect cpu to membus
 system.cpu.icache_port = system.membus.cpu_side_ports
 system.cpu.dcache_port = system.membus.cpu_side_ports
+# Create Cache simObjects
+system.cpu.icache = L1ICache()
+system.cpu.dcache = L1DCache()
 
 # Connect an I/O Controller
 system.cpu.createInterruptController()
