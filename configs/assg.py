@@ -17,7 +17,7 @@ system.mem_mode = 'timing'
 system.mem_ranges = [AddrRange('4GB')]
 
 # setting OoO cpu for the system
-system.cpu = X86TimingSimpleCPU()
+system.cpu = X86O3CPU()
 
 # Create Cache simObjects
 system.cpu.icache = L1ICache()
