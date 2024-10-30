@@ -36,6 +36,9 @@ system.l2bus = L2XBar()
 system.cpu.icache.connectBus(system.l2bus)
 system.cpu.dcache.connectBus(system.l2bus)
 
+system.l2cache = L2Cache()
+system.l2cache.connectCPUSideBus(system.l2bus)
+
 # Connect an I/O Controller
 system.cpu.createInterruptController()
 # Exclusive for X86
