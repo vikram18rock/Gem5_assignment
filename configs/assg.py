@@ -52,7 +52,11 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 
 # process creation
 # point to binary
-binary = 'ca_configs/hello'
+thispath = os.path.dirname(os.path.realpath(__file__))
+binary = os.path.join(
+    thispath,
+    "hello"
+)
 
 system.workload = SEWorkload.init_compatible(binary)
 
