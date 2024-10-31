@@ -3,6 +3,7 @@ import m5
 from m5.objects import *
 # import custom classes from caches module
 from caches import *
+from m5.objects import TAGE_SC_L
 
 # instantiating system
 system = System()
@@ -26,7 +27,8 @@ system.cpu.issueWidth = 2
 system.cpu.commitWidth = 2
 
 # Set Branch Predictor to Tage SC-L Predictor
-system.cpu.branchPred = TAGE_SC_L()  # Assuming TagePredictor is imported or defined
+system.cpu.branchPred = TAGE_SC_L()
+system.cpu.branchPred.ras.numEntries = 32
 
 # Create Cache simObjects
 system.cpu.icache = L1ICache()
