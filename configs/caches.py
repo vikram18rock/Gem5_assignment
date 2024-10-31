@@ -1,5 +1,5 @@
 # import objects from Cache.py module
-from m5.objects import Cache, BOPPrefetcher
+from m5.objects import WriteAllocator, Cache, BOPPrefetcher
 
 """ 
     # Cache class is the standard class
@@ -28,6 +28,9 @@ class L1Cache(Cache):
     # miss-status-holding-registers
     mshrs = 32
     tgts_per_mshr = 20
+    # block size specification
+    write_allocator = WriteAllocator()
+    write_allocator.block_size = 64
 
     def connectCPU(self, cpu):
     # need to define this in a base class!
@@ -64,6 +67,9 @@ class L2Cache(Cache):
     # 1 + 5 + 3 = 9
     mshrs = 32
     tgts_per_mshr = 12
+    # block size specification
+    write_allocator = WriteAllocator()
+    write_allocator.block_size = 64
     # Branch offset prefetcher
     prefetcher = BOPPrefetcher()
 
